@@ -35,16 +35,16 @@ object Form1: TForm1
     Left = 10
     Height = 15
     Top = 24
-    Width = 162
-    Caption = 'дій при натисканні на кнопки'
+    Width = 158
+    Caption = 'числа за певною формулою'
     ParentColor = False
   end
   object Label2: TLabel
     Left = 10
     Height = 15
     Top = 8
-    Width = 250
-    Caption = 'Додаток призначений для виконання певних '
+    Width = 217
+    Caption = 'Додаток призначений для обрахування'
     ParentColor = False
   end
   object Image1: TImage

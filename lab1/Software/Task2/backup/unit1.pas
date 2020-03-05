@@ -162,7 +162,7 @@ begin
   y:=strtofloat(edit2.Text);
   z:=strtofloat(edit3.Text);
   q:=abs(sin(abs(y-power(z, x))) + sqrt(x) - sqrt(power(y*z,4)/2 + 2 * pi));
-  label9.caption:= 'Q = ' +  floattostr(q):3:3;
+  label9.caption:= 'Q = ' +  floattostr(q);
 end;
 
 
