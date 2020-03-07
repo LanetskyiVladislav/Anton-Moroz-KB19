@@ -56,7 +56,6 @@ procedure TForm1.Button1Click(Sender: TObject);
 var
   y,z,q:real;
   x:integer;
-  list:string;
 begin
   if(check(edit1.text,edit2.Text,edit3.text)=false) then
     exit;
