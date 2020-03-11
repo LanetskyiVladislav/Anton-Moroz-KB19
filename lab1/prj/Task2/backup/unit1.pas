@@ -45,15 +45,15 @@ implementation
 procedure TForm1.Button1Click(Sender: TObject);
 var
   y,z,q:real;
-  x:integer;
+  x:float;
 begin
   if(check(edit1.text,edit2.Text,edit3.text)=false) then
     exit;
-  x:=strtoint(edit1.Text);
+  x:=strtofloat(edit1.Text);
   y:=strtofloat(edit2.Text);
   z:=strtofloat(edit3.Text);
   q:=abs(sin(abs(y-power(z, x))) + sqrt(x) - sqrt(power(y*z,4)/2 + 2 * pi));
-  label9.caption:= 'Q = ' +  floattostrf(q, ffcurrency, 8, 3);
+  label9.caption:= 'Q = ' +  floattostrf(q, ffFixed, 10, 3);
 end;
 
 end.
