@@ -2,23 +2,23 @@ object Form1: TForm1
   Left = 1308
   Height = 240
   Top = 125
-  Width = 554
+  Width = 490
   Caption = 'Form1'
   ClientHeight = 240
-  ClientWidth = 554
+  ClientWidth = 490
   LCLVersion = '2.0.6.0'
   object Label8: TLabel
-    Left = 256
+    Left = 192
     Height = 15
-    Top = 117
+    Top = 128
     Width = 53
     Caption = 'Результат'
     ParentColor = False
   end
   object Label7: TLabel
-    Left = 256
+    Left = 192
     Height = 1
-    Top = 134
+    Top = 144
     Width = 1
     ParentColor = False
   end
@@ -50,16 +50,16 @@ object Form1: TForm1
     Left = 10
     Height = 15
     Top = 24
-    Width = 162
-    Caption = 'дій при натисканні на кнопки'
+    Width = 336
+    Caption = 'генерування випадкового числа в діапазоні 5-10, 15-20, 25-30'
     ParentColor = False
   end
   object Label2: TLabel
     Left = 10
     Height = 15
     Top = 8
-    Width = 250
-    Caption = 'Додаток призначений для виконання певних '
+    Width = 340
+    Caption = 'Додаток призначений для показу дати, пошуку слова в тексті,'
     ParentColor = False
   end
   object Label1: TLabel
@@ -80,7 +80,7 @@ object Form1: TForm1
   object Button3: TButton
     Left = 272
     Height = 25
-    Top = 40
+    Top = 80
     Width = 208
     Caption = 'Перевірити наявність слова в тексті'
     OnClick = Button3Click
@@ -89,16 +89,16 @@ object Form1: TForm1
   object Button2: TButton
     Left = 360
     Height = 25
-    Top = 8
+    Top = 48
     Width = 120
     Caption = 'Випадкове число'
     OnClick = Button2Click
     TabOrder = 2
   end
   object Button1: TButton
-    Left = 272
+    Left = 271
     Height = 25
-    Top = 8
+    Top = 48
     Width = 75
     Caption = 'Дата'
     OnClick = Button1Click
