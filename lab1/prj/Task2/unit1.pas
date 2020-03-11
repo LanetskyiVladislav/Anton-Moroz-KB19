@@ -5,7 +5,7 @@ unit Unit1;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls, unit2;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls, unit2, Math;
 
 type
 
@@ -42,16 +42,6 @@ implementation
 
 { TForm1 }
 
-function power(a:real; b:integer):real;
-var
-  i:integer;
-begin
-  power:=a;
-  if(b>=2) then
-    for i:= 2 to b do
-      power:=power*a
-end;
-
 procedure TForm1.Button1Click(Sender: TObject);
 var
   y,z,q:real;
@@ -63,9 +53,8 @@ begin
   y:=strtofloat(edit2.Text);
   z:=strtofloat(edit3.Text);
   q:=abs(sin(abs(y-power(z, x))) + sqrt(x) - sqrt(power(y*z,4)/2 + 2 * pi));
-  label9.caption:= 'Q = ' +  floattostr(q);
+  label9.caption:= 'Q = ' +  floattostrf(q, ffcurrency, 10, 3);
 end;
-
 
 end.
 
