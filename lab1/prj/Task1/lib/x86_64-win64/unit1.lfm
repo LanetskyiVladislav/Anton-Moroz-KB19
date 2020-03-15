@@ -6,6 +6,7 @@ object Form1: TForm1
   Caption = 'lab1_task1_Moroz'
   ClientHeight = 282
   ClientWidth = 530
+  Position = poDesktopCenter
   LCLVersion = '2.0.6.0'
   object Label8: TLabel
     Left = 192
@@ -58,8 +59,8 @@ object Form1: TForm1
     Left = 10
     Height = 15
     Top = 8
-    Width = 340
-    Caption = 'Додаток призначений для показу дати, пошуку слова в тексті,'
+    Width = 494
+    Caption = 'Додаток призначений для показу дати, пошуку слова в тексті статті 3 Конституції України,'
     ParentColor = False
   end
   object Label1: TLabel

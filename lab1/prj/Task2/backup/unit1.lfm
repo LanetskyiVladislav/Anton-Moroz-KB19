@@ -3,7 +3,7 @@ object Form1: TForm1
   Height = 269
   Top = 189
   Width = 518
-  Caption = 'Form1'
+  Caption = 'lab1_task2_Moroz'
   ClientHeight = 269
   ClientWidth = 518
   LCLVersion = '2.0.6.0'
