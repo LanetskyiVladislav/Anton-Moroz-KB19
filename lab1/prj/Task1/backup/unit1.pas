@@ -5,7 +5,7 @@ unit Unit1;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Unit2;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Unit2, StrUtils;
 
 type
 
@@ -24,9 +24,11 @@ type
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
+    Memo1: TMemo;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
+    procedure Memo1Change(Sender: TObject);
   private
 
   public
@@ -99,20 +101,26 @@ end;
 
 procedure TForm1.Button3Click(Sender: TObject);
 const
-  mytext: array [1..40] of string = ('Людина', 'її', 'життя', 'і', 'здоров''я', 'честь' ,'гідність', 'недоторканність',
-  'безпека', 'визнаються', 'в', 'Україні', 'найвищою', 'соціальною', 'цінністю', 'Права', 'свободи'
+  mytext: array [1..40] of ansistring = ('людина', 'її', 'життя', 'і', 'здоров''я', 'честь' ,'гідність', 'недоторканність',
+  'безпека', 'визнаються', 'в', 'Україні', 'найвищою', 'соціальною', 'цінністю', 'права', 'свободи'
   , 'людини', 'та', 'їхні', 'гарантії', 'визначають', 'зміст', 'спрямованість', 'діяльості',
-  'держави', 'Держава', 'відповідає', 'перед', 'людиною', 'за', 'свою', 'діяльність', 'Утвердження'
+  'держави', 'держава', 'відповідає', 'перед', 'людиною', 'за', 'свою', 'діяльність', 'утвердження'
   , 'забезпечення', 'прав', 'свобод', 'є' ,'головним', 'обов''язком');
 var
   i:byte;
+  textf:ansistring;
 begin
   if(check(edit1.text)=false) then
     exit;
   for i:=1 to 40 do
   begin
-    if(edit1.text = mytext[i]) then
-      Label7.caption := 'Текст містить введене слово'
+    textf := edit1.text;
+    textf := ansilowercase(textf);
+    if(textf = mytext[i]) then
+      begin
+        Label7.caption := 'Текст містить введене слово';
+        break
+      end
     else
       Label7.caption := 'Текст не містить введеного слова';
   end;

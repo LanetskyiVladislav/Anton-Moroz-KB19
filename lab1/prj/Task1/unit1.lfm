@@ -1,11 +1,11 @@
 object Form1: TForm1
   Left = 1308
-  Height = 240
+  Height = 282
   Top = 125
-  Width = 490
-  Caption = 'Form1'
-  ClientHeight = 240
-  ClientWidth = 490
+  Width = 530
+  Caption = 'lab1_task1_Moroz'
+  ClientHeight = 282
+  ClientWidth = 530
   LCLVersion = '2.0.6.0'
   object Label8: TLabel
     Left = 192
@@ -103,5 +103,18 @@ object Form1: TForm1
     Caption = 'Дата'
     OnClick = Button1Click
     TabOrder = 3
+  end
+  object Memo1: TMemo
+    Left = 8
+    Height = 96
+    Top = 160
+    Width = 472
+    Enabled = False
+    Lines.Strings = (
+      'Стаття 3 Конституції України'
+      'Людина, її життя і здоров''я, честь і гідність, недоторканість і безпека визнаються в Україні найвищою Соціальною цінністю.'
+      'Права і свободи людини та їх гарантії  визначають зміст і спрямованість діяльності держави. Держава відповідає перед людиною за свою діяльність. Утвердження і забезпечення прав людини і свобод людини є головним обов''язком держави.'
+    )
+    TabOrder = 4
   end
 end
