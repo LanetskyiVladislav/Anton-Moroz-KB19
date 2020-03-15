@@ -44,8 +44,7 @@ implementation
 
 procedure TForm1.Button1Click(Sender: TObject);
 var
-  y,z,q:real;
-  x:float;
+  y,z,q,x:float;
 begin
   if(check(edit1.text,edit2.Text,edit3.text)=false) then
     exit;
