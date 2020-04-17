@@ -52,12 +52,6 @@ static void showmess(bool rx, bool ry, bool rz){
 static void q_calculation(string x1, string y1, string z1){
     bool rx = 1, ry = 1, rz = 1;
 
-//перевірка чи вписані значення для змінних x, y, z
-    if(x1.size()==0 || y1.size()==0 || z1.size()==0){
-        cout<<"Значення для змінних не введено!"<<endl;
-        exit;
-    }
-
 //перевірка формата введених значень
     try{
         check_l(x1);
