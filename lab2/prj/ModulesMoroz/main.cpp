@@ -1,160 +1,84 @@
-#include <string>
-#include <iostream>
 #include <math.h>
-
+#include <iostream>
 using namespace std;
 
-// Р·РјС–РЅРЅР° РґР»СЏ РІРёРІРµРґРµРЅРЅСЏ СЂРµР·СѓР»СЊС‚Р°С‚Сѓ Р°Р±Рѕ РїРѕРјРёР»РѕРє
-// СЃРїС–Р»СЊРЅР° РґР»СЏ РґРІРѕС… С„СѓРЅРєС†С–Р№
-static string message;
+string mess;
 
-static string check_l(string a){
-    if(a.find(',') != 0){
-        while(a.find(',') != 0){
-            a[a.find(',')] = '.';
-        }
-    };
-    if(a.find('.')!=a.rfind('.')){
+bool checkx1(double x, double z){
+    mess="Введено неправильне значення для x!";
+    if(x<0)
+        return false;
+    if(z==0 && x!=floor(x))
+        return false;
+    mess="Значення x задовольняє вираз!";
+    return true;
+}
+
+double readv(double v){
+    mess="Число пройшло перевірку!";
+    if(abs(v)>1E16){
+        mess="Введене значення не входить в діапазон -1Е16 .. +1Е16!";
+        cout<<mess<<endl;
+    }
+    return v;
+}
+
+double q_calculation(double x, double y, double z){
+    readv(x);
+    readv(y);
+    readv(z);
+    if(checkx1(x,z)==false){
+       cout<<mess;
         exit;
     }
-    return a;
+    return round((abs( sin( abs( y - pow(z, x) ) ) + sqrt(x) - sqrt( 0.5 * pow( y*z, 4 ) + 2 * M_PI) ))*100)/100.0;
 }
 
-static void showmess(bool rx, bool ry, bool rz){
-    message="Р’РІРµРґРµРЅРѕ РЅРµРїСЂР°РІРёР»СЊРЅ";
-    if(rx==0){
-        if(ry==0 || rz==0){
-            message+="С– Р·РЅР°С‡РµРЅРЅСЏ РґР»СЏ x";
-            if(ry==0){
-            message+=", y";
-            }
-            if(rz==0){
-                message+=", z";
-            }
-        }else{
-            message+="Рµ Р·РЅР°С‡РµРЅРЅСЏ РґР»СЏ x";
-        }
-        message+="!";
-    }else if(ry==0){
-        if(rz==0){
-            message+="С– Р·РЅР°С‡РµРЅРЅСЏ РґР»СЏ y, z";
-        }else{
-            message+="Рµ Р·РЅР°С‡РµРЅРЅСЏ РґР»СЏ y";
-        }
-        message+="!";
-    }else{
-        message+="Рµ Р·РЅР°С‡РµРЅРЅСЏ РґР»СЏ z!";
+
+void test_task2_1(){
+    double ts[6]={5, -10 , -1615951915651151962.0 , 5195126519321549565.0 , 4965.6 , -84.56};//Р·РЅР°С‡РµРЅРЅСЏ РґР»СЏ С‚РµСЃС‚СѓРІР°РЅРЅСЏ РїРµСЂС€РѕС— С„СѓРЅРєС†С–С—
+    cout<<endl<<endl<<"Перевірка першої функції"<<endl<<endl;
+    for(short i=0; i<6; i++){
+        cout<<i+1<<"  x = "<<ts[i]<<"   "<<readv(ts[i])<<"   ";//<<mess<<"  ";
+        if(i<2 ||  i>3)
+            cout<<(mess=="Число пройшло перевірку!")<<endl<<endl;
+        else
+            cout<<(mess=="Введене значення не входить в діапазон -1Е16 .. +1Е16!")<<endl<<endl;
     }
-    cout<<message<<endl;
-    exit;
+    cout<<endl<<endl<<"Перевірка другої функції"<<endl<<endl;
+    double ts2[3][2]={ {5 , 0}, {-7 , 9}, {8.4 , 0}};
+    for(short i=0; i<3; i++){
+        cout<<i+7<<"  x = "<<ts2[i][0]<<", z = "<<ts2[i][1]<<"   "<<checkx1(ts2[i][0], ts2[i][1])<<"   ";
+        if(i==0)
+            cout<<(mess=="Значення x задовольняє вираз!")<<endl<<endl;
+        else
+            cout<<(mess=="Введено неправильне значення для x!")<<endl<<endl;
+    }
+    cout<<endl<<endl<<"Перевірка третьої функції"<<endl<<endl;
+    double x=2,y=5,z=10;
+    cout<<12<<"  x = "<<x<<", y = "<<y<<", z = "<<z<<"   "<<q_calculation(x,y,z)<<"   ";
+    if(q_calculation(x,y,z)==1765.67){
+        mess="Обчислення пройшло успішно!";
+        cout<<"Обчислення пройшло успішно!"<<"  "<<(mess=="Обчислення пройшло успішно!");
+    }
+
+
 }
 
-static void q_calculation(string x1, string y1, string z1){
-    bool rx = 1, ry = 1, rz = 1;
 
-//РїРµСЂРµРІС–СЂРєР° С„РѕСЂРјР°С‚Р° РІРІРµРґРµРЅРёС… Р·РЅР°С‡РµРЅСЊ
-    try{
-        check_l(x1);
-    }catch(exception e){
-        rx=0;
-    }
-    try{
-        check_l(y1);
-    }catch(exception e){
-        ry=0;
-    }
-    try{
-        check_l(z1);
-    }catch(exception e){
-        rz=0;
-    }
-    showmess(rx, ry, rz);
 
-//РїРµСЂРµРІС–СЂРєР° РјРѕР¶Р»РёРІРѕСЃС‚С– РїРµСЂРµРІРµСЃС‚Рё Р·РЅР°С‡РµРЅРЅСЏ СЂСЏРґРєРѕРІРёС… Р·РјС–РЅРЅРёС… Сѓ С‡РёСЃР»РѕРІС–
-    float x, y, z;
-    try{
-        x=stof(x1);
-    }catch(exception e){
-        rx=0;
-    }
-    try{
-        y=stof(y1);
-    }catch(exception e){
-        ry=0;
-    }
-    try{
-        z=stof(z1);
-    }catch(exception e){
-        rz=0;
-    }
-    showmess(rx, ry, rz);
-    ry=1;
-    rz=1;
-// РІР°Р»С–РґР°С‚РѕСЂ
-    //x
-    if( ( x < 0 ) || ( ( z = 0 ) && (x!=floor(x)) ) ){
-        rx = 0;
-    }
-    showmess(rx, ry, rz);
-
-// РѕР±С‡РёСЃР»РµРЅРЅСЏ
-    cout<<"Q = "<<abs( sin( abs( y - pow(z, x) ) ) + sqrt(x) - sqrt( 0.5 * pow( y*z, 4 ) + 2 * M_PI) )<<endl;
-}
-
-static void s_calculation(string x1, string y1, string z1){
-    bool rx = 1, ry = 1, rz = 1;
-
-//РїРµСЂРµРІС–СЂРєР° С„РѕСЂРјР°С‚Р° РІРІРµРґРµРЅРёС… Р·РЅР°С‡РµРЅСЊ
-    try{
-        check_l(x1);
-    }catch(exception e){
-        rx=0;
-    }
-    try{
-        check_l(y1);
-    }catch(exception e){
-        ry=0;
-    }
-    try{
-        check_l(z1);
-    }catch(exception e){
-        rz=0;
-    }
-    showmess(rx, ry, rz);
-
-//РїРµСЂРµРІС–СЂРєР° РјРѕР¶Р»РёРІРѕСЃС‚С– РїРµСЂРµРІРµСЃС‚Рё Р·РЅР°С‡РµРЅРЅСЏ СЂСЏРґРєРѕРІРёС… Р·РјС–РЅРЅРёС… Сѓ С‡РёСЃР»РѕРІС–
-    float x, y, z;
-    try{
-        x=stof(x1);
-    }catch(exception e){
-        rx=0;
-    }
-    try{
-        y=stof(y1);
-    }catch(exception e){
-        ry=0;
-    }
-    try{
-        z=stof(z1);
-    }catch(exception e){
-        rz=0;
-    }
-    showmess(rx, ry, rz);
-    ry=1;
-    rz=1;
-// РІР°Р»С–РґР°С‚РѕСЂ
+/*double s_calculation(double x, double y, double z){
+// ГѓВђГ‚ВІГѓВђГ‚В°ГѓВђГ‚В»ГѓвЂГўв‚¬вЂњГѓВђГ‚ВґГѓВђГ‚В°ГѓвЂГўв‚¬ЕЎГѓВђГ‚ВѕГѓвЂГўвЂљВ¬
     //x
     if( x < ( (-7) * M_PI )) {
-        rx = 0;
+        return "Г‚ГўГҐГ¤ГҐГ­Г® Г­ГҐГЇГ°Г ГўГЁГ«ГјГ­ГҐ Г§Г­Г Г·ГҐГ­Г­Гї Г¤Г«Гї x!";
     }
-    showmess(rx, ry, rz);
 
-    //СЃРёСЃС‚РµРјР° СЂС–РІРЅРѕСЃС‚РµР№
+    //ГѓвЂГ‚ВЃГѓВђГ‚ВёГѓвЂГ‚ВЃГѓвЂГўв‚¬ЕЎГѓВђГ‚ВµГѓВђГ‚ВјГѓВђГ‚В° ГѓвЂГўвЂљВ¬ГѓвЂГўв‚¬вЂњГѓВђГ‚ВІГѓВђГ‚ВЅГѓВђГ‚ВѕГѓвЂГ‚ВЃГѓвЂГўв‚¬ЕЎГѓВђГ‚ВµГѓВђГ‚В№
     if( (( pow(M_E, abs(x)) + ( sqrt( abs( y-z ) ) )/( sin(z*y) ) ) <0)||( pow(M_E, abs(x)) < ( sqrt( abs( y-z ) ) )/( sin(z*y) ) )){
-        cout<<"Р—РЅР°С‡РµРЅРЅСЏ Р·РјС–РЅРЅРёС… РЅРµ Р·Р°РґРѕРІРѕР»СЊРЅСЏС” РІРёСЂР°Р·!"<<endl;
+        return "Г‡Г­Г Г·ГҐГ­Г­Гї Г§Г¬ВіГ­Г­ГЁГµ Г­ГҐ Г§Г Г¤Г®ГўГ®Г«ГјГ­ГїГѕГІГј ГўГЁГ°Г Г§!";
     }
 
-// РѕР±С‡РёСЃР»РµРЅРЅСЏ
-    cout<<"S = "<< 0.5*((y*y+2*z)/(sqrt(7*M_PI+x)))-sqrt(pow(M_E, abs(x)) + ( sqrt( abs( y-z ) ) )/( sin(z*y) ))<<endl;
-}
-
+// ГѓВђГ‚ВѕГѓВђГ‚В±ГѓвЂГўв‚¬ВЎГѓВђГ‚ВёГѓвЂГ‚ВЃГѓВђГ‚В»ГѓВђГ‚ВµГѓВђГ‚ВЅГѓВђГ‚ВЅГѓвЂГ‚ВЏ
+    return round((0.5*((y*y+2*z)/(sqrt(7*M_PI+x)))-sqrt(pow(M_E, abs(x)) + ( sqrt( abs( y-z ) ) )/( sin(z*y) )))*100)/100.0;
+}*/

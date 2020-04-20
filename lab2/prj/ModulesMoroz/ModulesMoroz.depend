@@ -1,6 +1,5 @@
 # depslib dependency file v1.0
-1587126260 source:e:\anton-moroz-kb19\lab2\prj\modulesmoroz\main.cpp
-	<string>
-	<iostream>
+1587344001 source:e:\anton-moroz-kb19\lab2\prj\modulesmoroz\main.cpp
 	<math.h>
+	<iostream>
 

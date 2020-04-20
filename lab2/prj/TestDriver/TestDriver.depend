@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1587375335 source:e:\anton-moroz-kb19\lab2\prj\testdriver\main.cpp
+	<iostream>
+	<clocale>
+	<string>
+	"ModulesMoroz.h"
+	<windows.h>
+	<math.h>
+
+1587375361 e:\anton-moroz-kb19\lab2\prj\modulesmoroz.h
+	<string>
+
