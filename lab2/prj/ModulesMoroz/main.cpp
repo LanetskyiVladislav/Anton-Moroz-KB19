@@ -59,26 +59,79 @@ void test_task2_1(){
     cout<<12<<"  x = "<<x<<", y = "<<y<<", z = "<<z<<"   "<<q_calculation(x,y,z)<<"   ";
     if(q_calculation(x,y,z)==1765.67){
         mess="Îá÷èñëåííÿ ïğîéøëî óñï³øíî!";
-        cout<<"Îá÷èñëåííÿ ïğîéøëî óñï³øíî!"<<"  "<<(mess=="Îá÷èñëåííÿ ïğîéøëî óñï³øíî!");
+        cout<<"Îá÷èñëåííÿ ïğîéøëî óñï³øíî!"<<"  "<<(mess=="Îá÷èñëåííÿ ïğîéøëî óñï³øíî!")<<endl;
     }
-
-
 }
 
 
-
-/*double s_calculation(double x, double y, double z){
-// ÃƒÂÃ‚Â²ÃƒÂÃ‚Â°ÃƒÂÃ‚Â»Ãƒâ€˜Ã¢â‚¬â€œÃƒÂÃ‚Â´ÃƒÂÃ‚Â°Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â€šÂ¬
-    //x
-    if( x < ( (-7) * M_PI )) {
-        return "Ã‚Ã¢Ã¥Ã¤Ã¥Ã­Ã® Ã­Ã¥Ã¯Ã°Ã Ã¢Ã¨Ã«Ã¼Ã­Ã¥ Ã§Ã­Ã Ã·Ã¥Ã­Ã­Ã¿ Ã¤Ã«Ã¿ x!";
+bool checkx2(double x){
+    mess="Ââåäåíî íåïğàâèëüíå çíà÷åííÿ äëÿ x!";
+    if(x<M_PI*(-7)){
+        cout<<mess<<endl;
+        return false;
     }
+    mess="Çíà÷åííÿ x çàäîâîëüíÿº âèğàç!";
+    return true;
+}
 
-    //Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â¸Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚ÂµÃƒÂÃ‚Â¼ÃƒÂÃ‚Â° Ãƒâ€˜Ã¢â€šÂ¬Ãƒâ€˜Ã¢â‚¬â€œÃƒÂÃ‚Â²ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¾Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚ÂµÃƒÂÃ‚Â¹
+bool checkval(double x, double y, double z){
+    mess="Äàí³ çíà÷åííÿ íå çàäîâîëüíÿşòü âèğàç!";
     if( (( pow(M_E, abs(x)) + ( sqrt( abs( y-z ) ) )/( sin(z*y) ) ) <0)||( pow(M_E, abs(x)) < ( sqrt( abs( y-z ) ) )/( sin(z*y) ) )){
-        return "Ã‡Ã­Ã Ã·Ã¥Ã­Ã­Ã¿ Ã§Ã¬Â³Ã­Ã­Ã¨Ãµ Ã­Ã¥ Ã§Ã Ã¤Ã®Ã¢Ã®Ã«Ã¼Ã­Ã¿Ã¾Ã²Ã¼ Ã¢Ã¨Ã°Ã Ã§!";
+        cout<<mess<<endl;
+        return false;
     }
+    mess="Äàí³ çíà÷åííÿ çàäîâîëüíÿşòü âèğàç!";
+    return true;
+}
 
-// ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â±Ãƒâ€˜Ã¢â‚¬Â¡ÃƒÂÃ‚Â¸Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â»ÃƒÂÃ‚ÂµÃƒÂÃ‚Â½ÃƒÂÃ‚Â½Ãƒâ€˜Ã‚Â
+double s_calculation(double x, double y, double z){
+    readv(x);
+    readv(y);
+    readv(z);
+    if(checkx2(x)==false){
+        cout<<mess;
+        exit;
+    }
+    if(checkval(x,y,z)==false){
+        cout<<mess;
+        exit;
+    }
     return round((0.5*((y*y+2*z)/(sqrt(7*M_PI+x)))-sqrt(pow(M_E, abs(x)) + ( sqrt( abs( y-z ) ) )/( sin(z*y) )))*100)/100.0;
-}*/
+}
+
+void test_task2_2(){
+    double ts[4]={5961, 98492649485661515864.0 , -53868638465435485648.0 , -14159};//Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ½Ñ Ğ´Ğ»Ñ Ñ‚ĞµÑÑ‚ÑƒĞ²Ğ°Ğ½Ğ½Ñ Ğ¿ĞµÑ€ÑˆĞ¾Ñ— Ñ„ÑƒĞ½ĞºÑ†Ñ–Ñ—
+    cout<<endl<<endl<<"Ïåğåâ³ğêà ïåğøî¿ ôóíêö³¿"<<endl<<endl;
+    for(short i=0; i<4; i++){
+        cout<<i+1<<"  x = "<<ts[i]<<"   "<<readv(ts[i])<<"   ";//<<mess<<"  ";
+        if(i==0 ||  i==3)
+            cout<<(mess=="×èñëî ïğîéøëî ïåğåâ³ğêó!")<<endl<<endl;
+        else
+            cout<<(mess=="Ââåäåíå çíà÷åííÿ íå âõîäèòü â ä³àïàçîí -1Å16 .. +1Å16!")<<endl<<endl;
+    }
+    cout<<endl<<endl<<"Ïåğåâ³ğêà äğóãî¿ ôóíêö³¿"<<endl<<endl;
+    double ts2[2]={-23 , 15};
+    for(short i=0; i<2; i++){
+        cout<<i+5<<"  x = "<<ts2[i]<<"   "<<checkx2(ts2[i])<<"   ";
+        if(i==1)
+            cout<<(mess=="Çíà÷åííÿ x çàäîâîëüíÿº âèğàç!")<<endl<<endl;
+        else
+            cout<<(mess=="Ââåäåíî íåïğàâèëüíå çíà÷åííÿ äëÿ x!")<<endl<<endl;
+    }
+	cout<<endl<<endl<<"Ïåğåâ³ğêà òğåòüî¿ ôóíêö³¿"<<endl<<endl;
+    double ts3[2][3]={{1 , 90 , 3},{15 , 3 , 8}};
+    for(short i=0; i<2; i++){
+        cout<<i+7<<"  x = "<<ts3[i][0]<<",  y = "<<ts3[i][1]<<",  z = "<<ts3[i][2]<<"   "<<checkval(ts3[i][0], ts3[i][1], ts3[i][2])<<"   ";
+        if(i==1)
+            cout<<(mess=="Äàí³ çíà÷åííÿ çàäîâîëüíÿşòü âèğàç!")<<endl<<endl;
+        else
+            cout<<(mess=="Äàí³ çíà÷åííÿ íå çàäîâîëüíÿşòü âèğàç!")<<endl<<endl;
+    }
+    cout<<endl<<endl<<"Ïåğåâ³ğêà ÷åòâåğòî¿ ôóíêö³¿"<<endl<<endl;
+    double x=15,y=3,z=-17;
+    cout<<9<<"  x = "<<x<<", y = "<<y<<", z = "<<z<<"   "<<s_calculation(x,y,z)<<"   ";
+    if(s_calculation(x,y,z)==-1810,1){
+        mess="Îá÷èñëåííÿ ïğîéøëî óñï³øíî!";
+        cout<<"Îá÷èñëåííÿ ïğîéøëî óñï³øíî!"<<"  "<<(mess=="Îá÷èñëåííÿ ïğîéøëî óñï³øíî!")<<endl;
+    }
+}
