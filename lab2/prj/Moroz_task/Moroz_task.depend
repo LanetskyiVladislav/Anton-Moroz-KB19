@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1587586597 source:e:\anton-moroz-kb19\lab2\prj\moroz_task\main.cpp
+	<iostream>
+	<iomanip>
+	<windows.h>
+	<string>
+	<math.h>
+	"ModulesMoroz.h"
+
+1587382532 e:\anton-moroz-kb19\lab2\prj\modulesmoroz.h
+	<string>
+

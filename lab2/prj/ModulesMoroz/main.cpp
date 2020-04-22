@@ -16,8 +16,8 @@ bool checkx1(double x, double z){
 
 double readv(double v){
     mess="Число пройшло перевірку!";
-    if(abs(v)>1E16){
-        mess="Введене значення не входить в діапазон -1Е16 .. +1Е16!";
+    if(abs(v)>100){
+        mess="Введене значення не входить в діапазон -100 .. +100!";
         cout<<mess<<endl;
     }
     return v;
@@ -25,11 +25,17 @@ double readv(double v){
 
 double q_calculation(double x, double y, double z){
     readv(x);
+    if(mess=="Введене значення не входить в діапазон -100 .. +100!")
+        return 0;
     readv(y);
+    if(mess=="Введене значення не входить в діапазон -100 .. +100!")
+        return 0;
     readv(z);
+    if(mess=="Введене значення не входить в діапазон -100 .. +100!")
+        return 0;
     if(checkx1(x,z)==false){
        cout<<mess;
-        exit;
+        return 0;
     }
     return round((abs( sin( abs( y - pow(z, x) ) ) + sqrt(x) - sqrt( 0.5 * pow( y*z, 4 ) + 2 * M_PI) ))*100)/100.0;
 }
@@ -43,7 +49,7 @@ void test_task2_1(){
         if(i<2 ||  i>3)
             cout<<(mess=="Число пройшло перевірку!")<<endl<<endl;
         else
-            cout<<(mess=="Введене значення не входить в діапазон -1Е16 .. +1Е16!")<<endl<<endl;
+            cout<<(mess=="Введене значення не входить в діапазон -100 .. +100!")<<endl<<endl;
     }
     cout<<endl<<endl<<"Перевірка другої функції"<<endl<<endl;
     double ts2[3][2]={ {5 , 0}, {-7 , 9}, {8.4 , 0}};
@@ -86,28 +92,34 @@ bool checkval(double x, double y, double z){
 
 double s_calculation(double x, double y, double z){
     readv(x);
+    if(mess=="Введене значення не входить в діапазон -100 .. +100!")
+        return 0;
     readv(y);
+    if(mess=="Введене значення не входить в діапазон -100 .. +100!")
+        return 0;
     readv(z);
+    if(mess=="Введене значення не входить в діапазон -100 .. +100!")
+        return 0;
     if(checkx2(x)==false){
         cout<<mess;
-        exit;
+        return 0;
     }
     if(checkval(x,y,z)==false){
         cout<<mess;
-        exit;
+        return 0;
     }
     return round((0.5*((y*y+2*z)/(sqrt(7*M_PI+x)))-sqrt(pow(M_E, abs(x)) + ( sqrt( abs( y-z ) ) )/( sin(z*y) )))*100)/100.0;
 }
 
 void test_task2_2(){
-    double ts[4]={5961, 98492649485661515864.0 , -53868638465435485648.0 , -14159};//Р·РЅР°С‡РµРЅРЅСЏ РґР»СЏ С‚РµСЃС‚СѓРІР°РЅРЅСЏ РїРµСЂС€РѕС— С„СѓРЅРєС†С–С—
+    double ts[4]={59, 98492649485661515864.0 , -53868638465435485648.0 , -14};//Р·РЅР°С‡РµРЅРЅСЏ РґР»СЏ С‚РµСЃС‚СѓРІР°РЅРЅСЏ РїРµСЂС€РѕС— С„СѓРЅРєС†С–С—
     cout<<endl<<endl<<"Перевірка першої функції"<<endl<<endl;
     for(short i=0; i<4; i++){
         cout<<i+1<<"  x = "<<ts[i]<<"   "<<readv(ts[i])<<"   ";//<<mess<<"  ";
         if(i==0 ||  i==3)
             cout<<(mess=="Число пройшло перевірку!")<<endl<<endl;
         else
-            cout<<(mess=="Введене значення не входить в діапазон -1Е16 .. +1Е16!")<<endl<<endl;
+            cout<<(mess=="Введене значення не входить в діапазон -100 .. +100!")<<endl<<endl;
     }
     cout<<endl<<endl<<"Перевірка другої функції"<<endl<<endl;
     double ts2[2]={-23 , 15};
