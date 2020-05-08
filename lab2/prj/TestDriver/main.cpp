@@ -11,6 +11,5 @@ int main()
     test_task2_1();
     cout<<endl<<endl<<endl<<endl;
     test_task2_2();
-
 	return 0;
 }

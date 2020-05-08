@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="WINDOWS-1251" standalone="yes" ?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
@@ -27,9 +27,12 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="../../prj" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add library="../ModulesMoroz/bin/Debug/libModulesMoroz.a" />
+					<Add directory="../ModulesMoroz/bin/Debug" />
 				</Linker>
 			</Target>
 		</Build>
