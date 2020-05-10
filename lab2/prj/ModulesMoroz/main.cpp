@@ -1,5 +1,6 @@
 #include <math.h>
 #include <iostream>
+#include <string>
 using namespace std;
 
 string mess;
@@ -147,3 +148,75 @@ void test_task2_2(){
         cout<<"Обчислення пройшло успішно!"<<"  "<<(mess=="Обчислення пройшло успішно!")<<endl;
     }
 }
+string cut(string v){
+    while((v.rfind('.')<v.rfind('0') && v[v.size()-1]=='0') || v[v.size()-1]=='.')
+        v.erase(v.size()-1, 1);
+    return v;
+}
+
+string check_speed(double s){
+    if(s<0)
+        return "Введене число менше 0!";
+    if(s>10000)
+        return "Введене число завелике!";
+    if(s>=0 && s<117){
+        return "Категорія F0, частота - 38,9%";
+    }else if(s>=117 && s<181){
+        return "Категорія F1, частота - 35,6%";
+    }else if(s>=181 && s<254){
+        return "Категорія F2, частота - 19,4%";
+    }else if(s>=254 && s<333){
+        return "Категорія F3, частота - 4,9%";
+    }else if(s>=333 && s<419){
+        return "Категорія F4, частота - 1,1%";
+    }else{
+        return "Категорія F5, частота - менше 0,1% ";
+    }
+}
+
+int count_sym(string s, char a){
+    int n=0;
+    for(int i=0; i<s.length(); i++)
+        s[i]==a ? n++ : n+=0; ;
+    return n;
+}
+
+string calc_temp(short temp[6]){
+    double m=0;
+    for(short i=0; i<6; i++){
+        m+=temp[i];
+    }
+    m=(round(m/6)*10)/10;
+    return "Середньодобова температура: \n За шкалою Цельсія - "+cut(to_string((round(m/6)*10)/10))+"\nЗа шкалою Фаренгейта - "+cut(to_string(32+9*((round(m/6)*10)/10)/5));
+}
+
+string calc_num(int a){
+    if(a<0){
+        return "Число менше 0";
+    }
+    if(a>65535){
+        return "Число більше 65535";
+    }
+    string bin_res, res;
+    do{
+        bin_res= char('0'+ (a%2)) + bin_res;
+        a=a/2;
+    }while(a>0);
+    if(bin_res[bin_res.length()-1]=='0'){
+        return "Кількість нулів = "+cut(to_string(count_sym(bin_res, '0')));
+    }else{
+        return "Кількість одиниць = "+cut(to_string(count_sym(bin_res, '1')));
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
